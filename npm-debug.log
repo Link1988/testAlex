@@ -1,8 +1,8 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@1.4.15
-3 info using node@v0.10.28
-4 verbose node symlink /usr/local/bin/node
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink /usr/bin/node
 5 verbose run-script [ 'prestart', 'start', 'poststart' ]
 6 info prestart testAlex@0.0.0
 7 info start testAlex@0.0.0
@@ -18,10 +18,10 @@
 11 error You can get their info via:
 11 error     npm owner ls testAlex
 11 error There is likely additional logging output above.
-12 error System Darwin 14.1.0
-13 error command "node" "/usr/local/bin/npm" "start"
-14 error cwd /Users/AL3X/Sites/testAlex
-15 error node -v v0.10.28
-16 error npm -v 1.4.15
+12 error System Linux 3.13.0-46-generic
+13 error command "/usr/bin/node" "/usr/bin/npm" "start"
+14 error cwd /home/development/Documents/testAlex
+15 error node -v v0.10.33
+16 error npm -v 1.4.28
 17 error code ELIFECYCLE
 18 verbose exit [ 1, true ]

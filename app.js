@@ -7,11 +7,9 @@ var connect = require ('connect');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+var Data = require('./models/Data')();
 
 var app = express();
-
-var mongo = require('mongoskin');
-var db = mongo.db("mongodb://localhost:27017/alexTest", {native_parser:true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,11 +28,12 @@ app.use(function(req,res,next){
   next();
 });
 app.get('/', function(req, res){
-  res.sendfile( path.join( __dirname, '/app/index.html' ) );
+  //res.sendfile( path.join( __dirname, '/app/index.html' ) );
 });
 
-
-
+// I execute this method because I want insert the remote data from the url 
+Data.consoleTest();
+Data.firstInsert();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
