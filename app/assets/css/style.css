@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+footer {
+	color: #666;
+	background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+	padding: 17px 0 18px 0;
+	border-top: 1px solid #000;
+}
+
+footer a {
+	color: #999;
+}
+
+footer a:hover {
+	color: #efefef;
+}
