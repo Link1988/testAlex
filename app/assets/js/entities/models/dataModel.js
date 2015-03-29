@@ -1,9 +1,12 @@
 define(["app"], function(App){  
   var DataModel = Backbone.Model.extend({
-    defaults: {
-      name: null,
-      lastName: null,      
-    }
+
+  	url: function(){
+      return "data/" + ( this.get("_id") || "" );
+    },
+
+    idAttribute : "_id",
+
   });
   
   return DataModel;

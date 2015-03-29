@@ -7,6 +7,16 @@ module.exports = function(){
 	var consoleTest = function() {
 		console.log("Hello Model");
 	};
+
+	var findData = function (cb) {
+		db.collection('data').findOne({}, function(err, doc) {
+			if (err) {
+				cb(err, null)
+			} else {
+				cb(null, doc);
+			}
+		});
+	};
 	
 	/**
 		Method to create the collections if doesnt exist
@@ -100,7 +110,7 @@ module.exports = function(){
 		})
 	};
 
-	var getData = function(db, _id, cb) {  
+	var getData = function(_id, cb) {  
 		var newData;
 		db.collection('data').findOne({ _id: new ObjectID(_id) }, { 
 			"query.created": 1,
@@ -126,6 +136,7 @@ module.exports = function(){
 
 	return {
 		consoleTest: consoleTest,
+		findData: findData,
 		firstInsert: firstInsert,
 		getData: getData,
 	};
