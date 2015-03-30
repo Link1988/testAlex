@@ -139,6 +139,7 @@ module.exports = function(){
 		findData: findData,
 		firstInsert: firstInsert,
 		getData: getData,
+    updateData: updateData    
 	};
 
 

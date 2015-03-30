@@ -70,4 +70,13 @@ app.get('/', function(req, res) {
   res.sendFile('/index.html', {root: __dirname })
 });
 
+// Method to update the collections every 30 seconds 
+setInterval(function () {    
+  Data.updateData(function (err, updated) {
+    if (err) {
+      console.log("No documents updated for " + err)
+    }
+  });    
+}, 30000);
+
 module.exports = app;
