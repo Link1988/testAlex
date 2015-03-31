@@ -7,7 +7,7 @@ define([
       template: itemContentTemplate,
 
       initialize: function (data) {
-        console.log("Initialize :" +data);
+        debugger;
       },
       
     });

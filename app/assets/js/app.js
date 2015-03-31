@@ -9,6 +9,26 @@ define([
 
     var App = new Marionette.Application();
     var collectionData = new DataCollection();
+    var fetchModels = function() {
+      collectionData.fetch({
+        success: function() {
+          collectionData.models[0].fetch({
+            success: function(data){
+              contentView = new ContentView({
+                model: collectionData.models[0]
+              }); 
+              App.contentRegion.show(contentView);
+            },
+            error: function(){
+              alert("Hubo un error");
+            }
+          })
+        },
+        error: function () {
+          alert("No pude cargar la seccion");
+        }
+      });
+    };
 
     /* Agregamos regiones a la aplicacion, estas regiones son "contenedores" en los cuales podemos
      * mostrar (show) o quitar (empty) vistas
@@ -36,31 +56,7 @@ define([
 
       App.navigate("home");
       
-      collectionData.fetch({
-        success: function() {
-          collectionData.models[0].fetch({
-            success: function(data){
-              contentView = new ContentView({
-                model: collectionData.models[0]
-              }); 
-              App.contentRegion.show(contentView);
-            },
-            error: function(){
-              alert("Hubo un error");
-            }
-          })
-          /*
-          contentView = new ContentView({
-            collection: collectionData
-          }); 
-          App.contentRegion.show(contentView);
-          debugger;
-          */   
-        },
-        error: function () {
-          alert("No pude cargar la seccion");
-        }
-      });
+      fetchModels();
       var headerView = new HeaderView();     
       var footerView = new FooterView();
 
@@ -68,6 +64,11 @@ define([
       App.footerRegion.show(footerView);
       
     });
+
+    setInterval(function () {    
+      fetchModels();
+      console.log("Actualizando app");          
+    }, 30000);
 
     return App;
 });
