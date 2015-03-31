@@ -38,10 +38,24 @@ define([
       
       collectionData.fetch({
         success: function() {
+          collectionData.models[0].fetch({
+            success: function(data){
+              contentView = new ContentView({
+                model: collectionData.models[0]
+              }); 
+              App.contentRegion.show(contentView);
+            },
+            error: function(){
+              alert("Hubo un error");
+            }
+          })
+          /*
           contentView = new ContentView({
             collection: collectionData
           }); 
-          App.contentRegion.show(contentView);   
+          App.contentRegion.show(contentView);
+          debugger;
+          */   
         },
         error: function () {
           alert("No pude cargar la seccion");

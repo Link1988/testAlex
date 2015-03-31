@@ -88,21 +88,22 @@ module.exports = function(){
 	/**
 		Method to update the remote data
 	*/
-	var updateData = function() {
+	var updateData = function(cb) {
 		var query = {};
 		db.collection('data').findOne(query, function (err, doc) {
 			if (err) {
-				throw err;
+				cb(err, null)
 			}
 			if (!doc) {
 				console.log("No documents found");
+				cb(null. null);
 				db.close();
 			}
 			query['_id'] = doc._id;
 			doc.lastUpdated = new Date();
 			db.collection('data').update(query, doc, function (err, updated) {
 				if (err) {
-					throw err;
+					cb(err, null)
 				}
 				console.log("Document update: " + updated);
 				db.close();
@@ -113,7 +114,8 @@ module.exports = function(){
 	var getData = function(_id, cb) {  
 		var newData;
 		db.collection('data').findOne({ _id: new ObjectID(_id) }, { 
-			"query.created": 1,
+		"lastUpdated": 1,
+		"query.created": 1,
     	"query.results.quote.symbol": 1,
     	"query.results.quote.Ask": 1,
     	"query.results.quote.Bid": 1,
@@ -122,17 +124,10 @@ module.exports = function(){
     } , function (err, doc) {
     	if (err) {
     		cb(err, null);
-    	} 
-    	newData = JSON.stringify(doc);    
-    	cb(null, newData);                      
+    	}   
+    	cb(null, doc);                      
     });
 	};
-	
-	// Method to update the collections every 30 seconds 
-	setInterval(function () {    
-		updateData(db);        
-	}, 30000);
-	
 
 	return {
 		consoleTest: consoleTest,

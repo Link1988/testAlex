@@ -21,3 +21,8 @@ footer a {
 footer a:hover {
 	color: #efefef;
 }
+
+.border-gray {
+	margin-top: 20px;
+	border: 1px solid #AAAAAA;
+}

@@ -13,8 +13,8 @@ router.get('/data', function(req, res, next) {
 });
 
 router.get('/data/:id', function (req, res, next){
-
-    var id = req.params.id;    
+    var id = req.params.id    
+    console.log(id);
     Data.getData(id, function (err, data) {
       if (err) {
         res.send(500, err);

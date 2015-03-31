@@ -1,20 +1,26 @@
 define([
   "app",
+  "underscore",
   "entities/models/dataModel",
+  "modules/main/views/itemContentView",
   "tpl!modules/main/templates/content.tpl"], 
-  function(App, DataModel, ContentTemplate){
+  function(App, _, DataModel, itemContentView, ContentTemplate){
     var contentView = Marionette.CompositeView.extend({
       template: ContentTemplate,
 
-      initialize: function (data) {
-        console.log("Initialize :" +data);
-      }
-      /*
-      model: new DataModel({
-        name: "Alejandro",
-        lastName: "Hernandez"
-      }),
-      */
+      childView: itemContentView,
+
+      childViewContainer: '.row',
+
+      onShow: function() {
+        debugger;
+      },
+
+      initialize: function () {
+        this.collection = new Backbone.Collection(this.model.get('query').results.quote);
+        debugger;
+      },
+      
     });
 
     return contentView;
