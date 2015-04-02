@@ -12,6 +12,11 @@
     "ejs": "~2.3.1",
     "express": "~4.12.2",
     "morgan": "~1.5.1",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "connect": "~3.3.5",
+    "mongodb": "~1.4.34",
+    "request": "~2.53.0",
+    "mongoose": "~3.8.25",
+    "mongoskin": "~1.4.12"
   }
 }

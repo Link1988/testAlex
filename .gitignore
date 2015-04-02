@@ -1,1 +1,7 @@
-*.npm-debug.log
+### Node ###
+# Logs
+logs
+*.log
+
+# Dependency directory
+node_modules
