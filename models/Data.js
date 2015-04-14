@@ -68,6 +68,23 @@ module.exports = function(){
 		Method to make the first insert
 	*/
 	var firstInsert = function() {
+		db.collectionNames('data', function(err, collection) {
+			if (err) {
+				throw err;
+			}          
+			
+			if (collection.length === 0) {
+				createDataCollection(function (err, collection) {              
+					if (err) {
+						throw err;
+					} else {
+						insertRemoteData(db);
+						console.log("First insert");
+          }
+        });             
+      } 
+    });
+		/*
 		db.collections(function (err, collections) {
 			if (err) {
 				throw err;
@@ -82,8 +99,8 @@ module.exports = function(){
           }
         });             
       }         
-    });
-	}
+    });*/
+	};
 
 	/**
 		Method to update the remote data
